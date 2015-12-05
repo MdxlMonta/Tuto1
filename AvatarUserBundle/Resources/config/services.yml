@@ -1,0 +1,36 @@
+#parameters:
+#    avatar.directory: avatar
+#    class.entity: 'Tuto\UserBundle\Entity\User'
+#    unknow.path: 'images/unknow.png'
+#--------------------------------------------------------------
+#service pour la gestion de l'upload de fichier
+services:
+    tuto.avatar.upload:
+        class: Tuto\AvatarUserBundle\Lib\Upload
+        arguments: [%avatar.directory%]
+        
+#--------------------------------------------------------------
+# Service necessaire si on utilise un subscriber pour gerer doctrine
+# dans ce cas il faut enlever a l'entity User @ORM\EntityListeners({ "Tuto\AvatarUserBundle\Lib\AvatarUserListener" })
+#    tuto.avatar.subscriber:
+#        class: Tuto\AvatarUserBundle\Lib\AvatarSubscriber
+#        arguments: [@tuto.avatar.upload,%class.entity%]
+#        tags:
+#            - { name: doctrine.event_subscriber }
+
+#--------------------------------------------------------------
+# Service necessaire si on utilise un entityListener pour gerer doctrine
+# dans ce cas il faut rajouter a l'entity User @ORM\EntityListeners({ "Tuto\AvatarUserBundle\Lib\AvatarUserListener" })
+    avatar.user.listener:
+        class: Tuto\AvatarUserBundle\Lib\AvatarUserListener
+        arguments: [@tuto.avatar.upload]
+        tags:
+            - { name: doctrine.orm.entity_listener }
+            
+#--------------------------------------------------------------
+#service  pour twig            
+    tuto.twig.checkFile:
+        class: Tuto\AvatarUserBundle\Lib\TwigCheckFile
+        arguments: [%avatar.directory%,%unknow.path%]
+        tags:
+            - { name: twig.extension }

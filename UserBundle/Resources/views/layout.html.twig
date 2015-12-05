@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}MDXL!{% endblock %}</title>
+
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        {% block stylesheets %}
+            {% stylesheets output="css/compiled/main.css"
+          
+            %}
+            <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+            {% endstylesheets %}
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <br>
+        <div class="well col-sm-offset-2 col-sm-8 col-md-offset-4 col-md-4">
+            {% block body %}{% endblock %}
+        </div>
+        {% block javascripts %}
+            {% javascripts output='js/compiled/main_front.js'
+                        'js/jquery-1.11.3.min.js'
+                        'js/bootstrap.min.js'
+            %}
+            <script type="text/javascript" src="{{ asset_url }}" charset="utf-8"></script>
+            {% endjavascripts %}
+        {% endblock %}
+        {% block mscript %}{% endblock %}
+    </body>
+</html>

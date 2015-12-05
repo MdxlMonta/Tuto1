@@ -1,0 +1,4 @@
+tuto_user_user:
+    resource: "@TutoUserBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
