@@ -7,6 +7,7 @@ www.mdxl.xyz/cours
                       
 Exemple: Gestion d'utilisateurs possédant un Avatar.   
 Mot clefs: Services, EntityListener, Injection de dépendance, Upload, Extension Twig, CRUD
+
 I - Création du Bundle: UserBundle.  
 
 1. Création du Bundle.   
