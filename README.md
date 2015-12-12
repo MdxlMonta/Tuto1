@@ -1,4 +1,4 @@
-Ce Bundle correspond au Cours#1 - Symfony 2.7 sur : www.mdxl.xyz/cours/  
+Ce Bundle correspond au Cours#1 - Symfony 2.7 sur : www.mdxl.xyz/cours  
   
 ### Services et Upload de Fichier    
             
